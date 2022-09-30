@@ -1,0 +1,78 @@
+
+    
+  .meny{
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    padding: 0.01;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 35;
+    color: rgb(255, 255, 255);
+    display: flex;
+    margin: auto; 
+    background-color: #688db3;
+    overflow: hidden;
+    border: #ffffff;}
+  
+  /* stil, posisjon til linkene i "menyen" */
+  .meny a {
+    width: 40%;
+    margin: auto ;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border: 5px;}
+  
+  /* bytte farge på "hover" */
+  .meny a:hover {
+    background-color: #ffffff;
+    color: #688db3;}
+  
+  .meny a:hover {
+    background-color: #ffffff;
+    color: #688db3;}
+
+  .boks {
+    float: left;
+    border: 2px solid #688db3;
+    text-align: center;
+    width: 30%;
+    margin: 100px;
+    padding: 1vw;
+    background-color: #ffffff;}
+
+  .boks1 {
+    float: right;
+    border: 2px solid #688db3;
+    text-align: center;
+    width: 30%;
+    margin: 100px;
+    padding: 1vw;
+    background-color: #ffffff;}
+
+  .boks1 img
+  {max-width: 100%;
+    border-radius: 25px;}
+
+
+    /* for mange av kodene nedenfor bruker jeg margin-bottom for å bitte litt mellomrom for hver av tekstene*/
+  #innleveringer{
+    border: 4px;
+    margin: auto 10px;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+  border: 1px solid #deacac;
+  padding: 8px;
+}
+
+/*gir alle tr som står direkte under thead koden for nedenfor.*/
+thead > tr {
+  background-color: #3f4259;
+  color: #f6f7fa;
+}
