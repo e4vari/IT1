@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSgrid</title>
+    <style>
+        a {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: none;
+            font-size: xx-small;
+            color: black;
+            font-weight: lighter;
+        }
+ 
+        body {
+            background-color: rgb(255, 255, 255);
+            text-align: center;
+            text-decoration: solid;
+            font-weight: bold;
+        }
+
+        p   {
+            font-weight: lighter;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 50%;
+        }
+
+        div {
+            padding: 10px ;
+            background-color: rgb(205, 200, 200);
+            float: left;
+        }
+        section {
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: repeat(18, 1fr);
+            justify-content: space-between;
+        }
+
+        .span-16{
+            grid-column: span 16;
+            opacity: 0;
+        }
+        .span-6{
+            grid-column: span 10;
+            opacity: 0;
+        }
+
+        .alkalimetaller{
+        background-color: rgb(145, 210, 145);
+        color: black;
+        }
+
+        .jordalkalimetaller{
+        background-color: rgb(221, 175, 221);
+        color: black;
+        }
+
+        .andremetaller{
+        background-color: rgb(252, 252, 75);
+        }
+
+        .andreikkemetaller {
+        background-color: rgb(220, 147, 86);
+        }
+
+        .edelgasser{
+        background-color: rgb(170, 230, 230);
+        }
+
+        .halogen {
+            background-color: rgb(244, 172, 172);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1><a href="https://i0.wp.com/nettskulen.no/wp-content/uploads/2016/06/Periodesystemet-1.png?resize=2048%2C1351&ssl=1">periodesystemet</a></h1>
+    <section>
+        <div class="andreikkemetaller">1 
+            <a href="https://www.periodesystemet.no/grunnstoffer/hydrogen/index.html">hydrogen</a>
+        </div>
+
+        <div class="span-16"></div>
+
+        <div class="edelgasser">2 <br>
+            <a href="https://www.periodesystemet.no/grunnstoffer/helium/index.html">helium</a>
+        </div>
+
+        <div class="alkalimetaller">3 <br>
+            <a href="https://www.periodesystemet.no/grunnstoffer/litium/index.html">litium</a>
+        </div>
+
+        <div class="jordalkalimetaller">4 <br>
+            <a href="https://www.periodesystemet.no/grunnstoffer/beryllium/index.html">beryllium</a>
+        </div>
+
+        <div class="span-6"></div>
+        
+        <div class="andreikkemetaller">5 <br>
+            <a href="https://www.periodesystemet.no/grunnstoffer/bor/index.html">bor</a>
+        </div>
+
+        <div class="andreikkemetaller">6 <br>
+            <a href="">karbon</a>
+        </div>
+
+        <div class="andreikkemetaller">7
+            <a href="">nitrogen</a>
+        </div>
+
+        <div class="andreikkemetaller">8
+            <p>oksygen</p>
+        </div>
+
+        <div class="halogen">9
+            <p>flour</p>
+        </div>
+
+        <div class="edelgasser">10
+            <p>neon</p></div>
+
+        <div class="alkalimetaller">11
+            <p>natrium</p>
+        </div>
+
+        <div class="jordalkalimetaller">12
+            <p>magnesium</p>
+        </div>
+
+        <div class="span-6"></div>
+        
+        <div class="andremetaller">13
+            <p>aluminium</p>
+        </div>
+
+        <div class="andreikkemetaller">14
+            <p>silisium</p>
+        </div>
+
+        <div class="andreikkemetaller">15
+            <p>fosfor</p>
+            </div>
+
+        <div class="andreikkemetaller">16
+            <p>svovel</p>
+        </div>
+
+        <div class="halogen">17
+            <p>klor</p>
+        </div>
+
+        <div class="edelgasser">18
+            <p>argon</p></div>
+
+        <div class="alkalimetaller">19
+            <p>kalium</p>
+        </div>
+        
+        <div class="jordalkalimetaller">20
+            <p>kalsium</p>
+        </div>
+        
+        <div class="andremetaller">21
+            <p>scandium</p>
+        </div>
+        
+        <div class="andremetaller">22
+            <p>titanium</p>
+        </div>
+        
+        <div class="andremetaller">23
+            <p>vanadium</p>
+        </div>
+        
+        <div class="andremetaller">24
+            <p>krom</p>
+        </div>
+
+        <div class="andremetaller">25
+            <p>mangan</p>
+        </div>
+        
+        <div class="andremetaller">26
+            <p>jern</p>
+        </div>
+        <div class="andremetaller">27
+            <p>kobolt</p>
+        </div>
+        
+        <div class="andremetaller">28
+            <p>nikkel</p>
+        </div>
+        <div class="andremetaller">29
+            <p>kopar</p>
+        </div>
+        
+        <div class="andremetaller">30
+            <p>sink</p>
+        </div>
+        
+        <div class="andremetaller">31
+            <p>gallium</p>
+        </div>
+        
+        <div class="andremetaller">32
+            <p>germanium</p>
+        </div>
+        
+        <div class="andremetaller">33
+            <p>arsen</p>
+        </div>
+        
+        <div class="andreikkemetaller">34
+            <p>selen</p>
+        </div>
+
+        <div class="halogen">35
+            <p>brom</p>
+        </div>
+        
+        <div class="edelgasser">36
+            <p>krypton</p>
+        </div>
+
+        <div class="alkalimetaller">37
+            <p>rubidium</p>
+        </div>
+        
+        <div class="jordalkalimetaller">38
+            <p>strontium</p>
+        </div>
+
+        <div class="andremetaller">39
+            <p>yttrium</p>
+        </div>
+        
+        <div class="andremetaller">40
+            <p>zinconium</p>
+        </div>
+        
+        <div class="andremetaller">41
+            <p>niovium</p>
+        </div>
+        
+        <div class="andremetaller">42
+            <p>molybden</p>
+        </div>
+        
+        <div class="andremetaller">43
+            <p>technetium</p>
+        </div>
+
+        <div class="andremetaller">44
+            <p>ruthenium</p>
+        </div>
+        
+        <div class="andremetaller">45
+            <p>rhodium</p>
+        </div>
+        
+        <div class="andremetaller">46
+            <p>palladium</p>
+        </div>
+        
+        <div class="andremetaller">47
+            <p>sølv</p>
+        </div>
+
+        <div class="andremetaller">48
+            <p>kadmium</p>
+        </div>
+
+        <div class="andremetaller">49
+            <p>indium</p>
+        </div>
+        
+        <div class="andremetaller">50
+            <p>tinn</p>
+        </div>
+
+        <div class="andremetaller">51
+            <p>antimon</p>
+        </div>
+
+        <div class="andreikkemetaller">52
+            <p>tellur</p>
+        </div>
+        
+        <div class="halogen">53
+            <p>jod</p>
+        </div>
+
+        <div class="edelgasser">54
+            <p>xenon</p>
+        </div>
+
+        <div class="alkalimetaller">55
+            <p>cesium</p>
+        </div>
+        
+        <div class="jordalkalimetaller">56
+            <p>barium</p>
+        </div>
+
+        <div class="andremetaller">57
+            <p>lantan</p>
+        </div>
+        
+        <div class="andremetaller">72
+            <p>hafnium</p>
+        </div>
+        
+        <div class="andremetaller">73
+            <p>tantal</p>
+        </div>
+        
+        <div class="andremetaller">74
+            <p>wolfram</p>
+        </div>
+        
+        <div class="andremetaller">75
+            <p>rhenium</p>
+        </div>
+
+        <div class="andremetaller">76
+            <p>osmium</p>
+        </div>
+        
+        <div class="andremetaller">77
+            <p>iridium</p>
+        </div>
+        
+        <div class="andremetaller">78
+            <p>platina</p>
+        </div>
+        
+        <div class="andremetaller">79
+            <p>gull</p>
+        </div>
+
+        <div class="andremetaller">80
+            <p>kvikksølv</p>
+        </div>
+
+        <div class="andremetaller">81
+            <p>thallium</p>
+        </div>
+        
+        <div class="andremetaller">82
+            <p>bly</p>
+        </div>
+
+        <div class="andremetaller">83
+            <p>bismuth</p>
+        </div>
+
+        <div class="andremetaller">84
+            <p>polonium</p>
+        </div>
+        
+        <div class="halogen">85
+            <p>astat</p>
+        </div>
+
+        <div class="edelgasser">86
+            <p>radon</p>
+        </div>
+
+        <div class="alkalimetaller">87
+            <p>francium</p>
+        </div>
+        
+        <div class="jordalkalimetaller">88
+            <p>radium</p>
+        </div>
+
+        <div class="andremetaller">89
+            <p>actinium</p>
+        </div>
+        
+        <div class="andremetaller">104
+            <p>rutherfordium</p>
+        </div>
+        
+        <div class="andremetaller">105
+            <p>dubnium</p>
+        </div>
+        
+        <div class="andremetaller">106
+            <p>seaborgium</p>
+        </div>
+        
+        <div class="andremetaller">107
+            <p>bohrium</p>
+        </div>
+
+        <div class="andremetaller">108
+            <p>hassium</p>
+        </div>
+        
+        <div class="andremetaller">109
+            <p>meitnerium</p>
+        </div>
+        
+        <div class="andremetaller">110
+            <p>darmstadtium</p>
+        </div>
+        
+        <div class="andremetaller">111
+            <p>røtgenium</p>
+        </div>
+
+        <div class="andremetaller">112
+            <p>copernicium</p>
+        </div>
+
+        <div class="andremetaller">113
+            <p>nihonium</p>
+        </div>
+        
+        <div class="andremetaller">114
+            <p>flerovium</p>
+        </div>
+
+        <div class="andremetaller">115
+            <p>moscovium</p>
+        </div>
+
+        <div class="andremetaller">116
+            <p>livermorium</p>
+        </div>
+        
+        <div class="halogen">117
+            <p>tenness</p>
+        </div>
+
+        <div class="edelgasser">118
+            <p>oganesson</p>
+        </div>
+
+
+
+    </section>
+</body>
+</html>
