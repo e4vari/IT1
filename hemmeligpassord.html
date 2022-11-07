@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hemmelig passord</title>
+</head>
+<body>
+    <script>
+
+    let hemmeligPassord = "02112005"
+    let gjett = prompt ("gjett den hemmelige passordet! for hint skriv: ?lengde, ?1, ?2, ?siste, ?store, ?små"); 
+    
+    if (gjett== "hemmeligPassord"){
+        document.write("du valgte riktig passord ")
+    }
+
+    else if (gjett == "?lengde"){
+        document.write("lengde er " + hemmeligPassord.length)
+    }
+
+    else if (gjett == "?1"){
+        document.write("første bokstav er " + hemmeligPassord[0])
+    }
+
+    else if (gjett == "?2"){
+        document.write("andre bokstav er " + hemmeligPassord[1])
+    }
+
+    else if (gjett == "?siste"){
+        document.write("siste bokstav er " + hemmeligPassord[8])
+    }
+
+    else if (gjett == "?store"){
+        document.write("passordet i store bokstaver er " + hemmeligPassord.toUpperCase)
+    }
+    else if (gjett == "?små"){
+        document.write("passordet i små bokstaver er " + hemmeligPassord.toLocaleLowerCase)
+    }
+    else {
+        document.write("du valgte feil passord ")
+    }
+
+    </script>
+</body>
+</html>
