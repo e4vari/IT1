@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> visittkort - maskin</title>
+
+    <style>
+        body {
+            background-color: #ff005ddb;
+        }
+
+        /*CSS -  utseende på forside (spørsmålene)*/
+        #hoved {
+            font-size: xx-small;
+            width: fit-content;
+            padding: 30px;
+            font-family: monospace;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #ff0059;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /*CSS -  utseende på kortet*/
+        #kortDesign {
+            width: 150px;
+            padding: 60px;
+            font-size: xx-small;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 5px;
+            margin: auto;
+            margin-top: 80px;
+            text-align: left;
+        }
+
+        #img {
+            width: 200px;
+        }
+
+        #profilBilde {
+            size: 20%;
+        }
+
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            display: block;
+            margin-top: 2px;
+            margin-bottom: 10px;
+            font-family: inherit;
+            color: #f49db7;
+            border: 1px solid rgba(205, 51, 100, 0.874);
+            border-radius: 2px;
+            padding: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="hoved">
+        <h1 style="color: #f49db7; "> ✭design personlig kort!✭ </h1>
+
+
+        <input type="text" name="navn" placeholder="fullt navn " id="fulltNavn" required>
+        <input type="text" name="stilling" placeholder="nåværende stilling " id="stilling" required>
+        <input type="number" min="0" maxlength="11" placeholder="telefonnummer " id="telefon" required>
+        <label>
+            <input type="checkbox" name="foorekort" placeholder="gafe" id="foorekort">
+            <label for="foorekort"> ✰ førekort </label>
+        </label>
+        <br>
+        <br>
+        <input type="date" id="bursdag"> ✰ <br>
+        <br>
+        <label for="kjoonn"> ✰ kjønn </label>
+        <select id="kjoonn">
+            <option value=""> </option>
+            <option value="kvinne">kvinne</option>
+            <option value="mann">mann</option>
+            <option value="annen">annen</option>
+        </select>
+
+
+
+
+        <h2 style="color: #f49db7; background-color: #ebc6c68c;"> design ✰ </h2>
+        <label>
+            <input type="color" id="bakgrunnsfarge" value="#f5f5f5"> bakgrunnsfarge
+        </label> <br><br>
+        <div id="ramme" style="color: #ff0059;"> ramme?<br>
+            <input type="radio" name="radioKnapper" id="knapp1" required> alternativ 1<br>
+            <input type="radio" name="radioKnapper" id="knapp2" required> alternatic 2<br>
+        </div>
+        <br>
+        <input type="file" id="profilBilde"> <br>
+        <br><button onclick="fullfoor()" id="btnFullfoor"> bekreft </button>
+        <img id="img" src="" alt="selvvalgt bilde">
+        <br><button onclick="gåVidere()" id="videre"> gå videre </button>
+    </div>
+
+
+    <div id="kortDesign">
+        <p1 id="deisgnNavn"></p1><br>
+        <p1 id="designStilling"></p1><br>
+        <p1 id="designKjoonn"></p1><br>
+        <p1 id="designTelefon"></p1><br>
+        <p1 id="designFoodselsdato"></p1><br>
+        <p1 id="designFoorekort"></p1><br>
+    </div>
+
+
+
+    <script>
+        //knapper og design som ikke skal vises med engang
+        videre.hidden = true
+        img.hidden = true
+        kortDesign.hidden = true
+
+        // Henter elementer
+        let foodselsdato = document.querySelector("#bursdag");
+        let resultatBursdag = document.querySelector("#resultatBursdag");
+        let body = document.querySelector("body");
+        let resultatFarge = document.querySelector("#bakgrunnsfarge");
+        let knapp1 = document.getElementById("knapp1");
+        let knapp2 = document.getElementById("knapp2");
+        let ramme = document.querySelector("#ramme");
+        let deisgnNavn = document.getElementById("deisgnNavn");
+        let fulltNavn = document.getElementById("fulltNavn");
+
+
+        let foorekort = document.getElementById("foorekort");
+        let designFoorekort = document.getElementById("designFoorekort");
+        function harFoorekort() {
+            if (foorekort.checked == true) {
+                designFoorekort.innerHTML = "har førekort!"
+            }
+            else {
+                designFoorekort.innerHTML = ""
+            }
+        }
+
+
+        foodselsdato.addEventListener("input", skrivBursdag);
+        function skrivBursdag() {
+            let dato = foodselsdato.value;
+            resultatBursdag.innerHTML = + dato;
+        }
+
+
+        // Legger til en lytter
+        resultatFarge.addEventListener("input", byttFarge);
+        // Funksjon som bytter bakgrunnsfargen til <body>-elementet
+        function byttFarge() {
+            // Finner verdien til <input>-elementet
+            let farge = resultatFarge.value;
+            // Endrer bakgrunnsfarge
+            body.style.backgroundColor = farge;
+        }
+
+        function endreRamme() {
+            if (knapp1.checked == true) {
+                ramme.style.border = "dotted";
+                kortDesign.style.border = knapp1.value;
+            }
+            else {
+                ramme.style.border = "solid";
+                kortDesign.style.border = knapp2.value;
+            }
+        }
+        knapp1.addEventListener("click", endreRamme);
+        knapp2.addEventListener("click", endreRamme);
+
+
+        function fullfoor() {
+            img.hidden = false
+            var mittBilde = document.getElementById("profilBilde").files[0].name;
+            document.getElementById("img").src = mittBilde;
+        }
+
+        //nå skal knappen som var skjult vises
+        btnFullfoor.addEventListener("click", gåVidere);
+        function gåVidere() {
+            videre.hidden = false;
+        }
+
+        //når det trykkes på videre knappen skal funksjonen lagekort leses
+        videre.addEventListener("click", lageKort);
+        function lageKort() {
+            hoved.hidden = true;
+            kortDesign.hidden = false;
+            deisgnNavn.innerHTML = fulltNavn.value;
+            designTelefon.innerHTML = telefon.value;
+            designStilling.innerHTML = stilling.value;
+            designFoodselsdato.innerHTML = bursdag.value;
+            designKjoonn.innerHTML = kjoonn.value;
+            harFoorekort();
+            endreRamme();
+        }
+    </script>
+
+</body>
+</html>
