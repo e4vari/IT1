@@ -28,14 +28,25 @@
         /*CSS -  utseende på kortet*/
         #kortDesign {
             width: 150px;
-            padding: 60px;
+            padding: 30px;
             font-size: xx-small;
-            border: 1px solid rgb(0, 0, 0);
+            border: 1px solid rgb(255, 255, 255);
             border-radius: 5px;
             margin: auto;
             margin-top: 80px;
             text-align: left;
+            position: relative;
         }
+        #designBilde{
+            width: 100px;
+            top: 10px;
+            right: 10px;
+            position: absolute;
+       }
+       #designNavn{
+        font-weight: bold;
+
+       }
 
         #img {
             width: 200px;
@@ -45,6 +56,8 @@
             size: 20%;
         }
 
+
+    
 
         input[type="text"],
         input[type="number"],
@@ -109,12 +122,13 @@
 
 
     <div id="kortDesign">
-        <p1 id="deisgnNavn"></p1><br>
-        <p1 id="designStilling"></p1><br>
-        <p1 id="designKjoonn"></p1><br>
-        <p1 id="designTelefon"></p1><br>
-        <p1 id="designFoodselsdato"></p1><br>
-        <p1 id="designFoorekort"></p1><br>
+        <p1 id="designNavn"></p1><br>
+        <p2 id="designStilling"></p2><br>
+        <p2 id="designKjoonn"></p2><br>
+        <p2 id="designTelefon"></p2><br>
+        <p2 id="designFoodselsdato"></p2><br>
+        <p2 id="designFoorekort"></p2><br>
+        <img id="designBilde">
     </div>
 
 
@@ -124,6 +138,7 @@
         videre.hidden = true
         img.hidden = true
         kortDesign.hidden = true
+        designBilde.hidden = true;
 
         // Henter elementer
         let foodselsdato = document.querySelector("#bursdag");
@@ -133,12 +148,14 @@
         let knapp1 = document.getElementById("knapp1");
         let knapp2 = document.getElementById("knapp2");
         let ramme = document.querySelector("#ramme");
-        let deisgnNavn = document.getElementById("deisgnNavn");
+        let designNavn = document.getElementById("designNavn");
         let fulltNavn = document.getElementById("fulltNavn");
-
-
         let foorekort = document.getElementById("foorekort");
         let designFoorekort = document.getElementById("designFoorekort");
+        let mittBilde="";
+        
+
+        
         function harFoorekort() {
             if (foorekort.checked == true) {
                 designFoorekort.innerHTML = "har førekort!"
@@ -169,11 +186,12 @@
         function endreRamme() {
             if (knapp1.checked == true) {
                 ramme.style.border = "dotted";
-                kortDesign.style.border = knapp1.value;
+                kortDesign.style.border ="dotted";
+                 
             }
             else {
                 ramme.style.border = "solid";
-                kortDesign.style.border = knapp2.value;
+                kortDesign.style.border = "solid";
             }
         }
         knapp1.addEventListener("click", endreRamme);
@@ -182,9 +200,10 @@
 
         function fullfoor() {
             img.hidden = false
-            var mittBilde = document.getElementById("profilBilde").files[0].name;
+            mittBilde =URL.createObjectURL(document.getElementById("profilBilde").files[0]);
             document.getElementById("img").src = mittBilde;
         }
+
 
         //nå skal knappen som var skjult vises
         btnFullfoor.addEventListener("click", gåVidere);
@@ -197,13 +216,16 @@
         function lageKort() {
             hoved.hidden = true;
             kortDesign.hidden = false;
-            deisgnNavn.innerHTML = fulltNavn.value;
+            designBilde.hidden = false;
+
+            designNavn.innerHTML = fulltNavn.value;
             designTelefon.innerHTML = telefon.value;
             designStilling.innerHTML = stilling.value;
             designFoodselsdato.innerHTML = bursdag.value;
             designKjoonn.innerHTML = kjoonn.value;
             harFoorekort();
             endreRamme();
+            designBilde.src= mittBilde;
         }
     </script>
 
