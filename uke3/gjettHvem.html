@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gjettHvem.CSS">
+
+    <style>
+        body {
+            background-color: rgb(184, 195, 189);
+            font-size: small;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+
+        .plassering {
+            width: 40%;
+            margin: 0 auto;
+        }
+
+        #sporsmaal {
+            color: rgb(223, 235, 228);
+            /* border: 1px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 10px;*/
+
+        }
+
+
+        p {
+            color: rgb(223, 235, 228);
+        }
+    </style>
+</head>
+
+<body class="plassering">
+
+
+    <div class="overskrift">
+        <h1 id="sporsmaal"> spørsmål!</h1>
+    </div>
+
+    <p id="alternativ1"> alt.1 </p>
+    <p id="alternativ2"> alt.2 </p>
+    <p id="alternativ3"> alt.3 </p>
+
+    <audio id="lydFeilSvar" src="./gjettHvem/Feil.mp3"></audio>
+    <audio id="lydRiktigSvar" src="./gjettHvem/Applaus1.mp3"></audio>
+
+    <input id="inpSvar" type="text" placeholder="skriv svaret">
+    <input id="inpNyttSpmSvar" type="text" hidden="true">
+
+    <button id="btnKlar"> gå videre </button>
+    <button id="btnForrige"> forrige spm </button>
+    <button id="btnNeste"> neste spm </button>
+    <button id="btnAdmin">Admin</button>
+    <br></br>
+    <img id="imgBilde" src="" width="500" alt="">
+
+
+    <script>
+        var sporsmaal = document.getElementById("sporsmaal");
+        var alternativ1 = document.getElementById("alternativ1");
+        var alternativ2 = document.getElementById("alternativ2");
+        var alternativ3 = document.getElementById("alternativ3");
+        var lydRiktigSvar = document.getElementById("lydRiktigSvar");
+        var lydFeilSvar = document.getElementById("lydFeilSvar");
+
+
+        var inpSvar = document.getElementById("inpSvar");
+        var inpNyttSpmSvar = document.getElementById("inpNyttSpmSvar");
+        var btnKlar = document.getElementById("btnKlar");
+        var btnForrige = document.getElementById("btnForrige");
+        var btnNeste = document.getElementById("btnNeste");
+        var imgBilde = document.getElementById("imgBilde");
+        var btnAdmin = document.getElementById("btnAdmin");
+        var spmNr = 0;
+        btnForrige.disabled = true;
+
+
+        var spmOgSvar = [
+            { q: "hvem er dette?", a1: "1: stig-andre berge", a2: "2: stig-andres berge", a3: "3: stig-helge berge", riktig: "1", bilde: "gjettHvem/stig-andre.jpg" },
+            { q: "hvilken parti sitter i stortinget (2023)", riktig: "Ap", a1: "", a2: "", a3: "", bilde: "gjettHvem/jonasGharStøre.jpg" },
+            { q: "hvor mange fylker har vi i norge", a1: "1: 11", a2: "2: 10", a3: "3: 13", riktig: "1", bilde: "gjettHvem/fylker.jpg" },
+            { q: "Hvem var kvartfinalen i går i håndball VM", riktig: "Spania", a1: "", a2: "", a3: "", bilde: "" }
+
+        ]
+
+        function settOppSkjermbilde() {
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            imgBilde.src = spmOgSvar[spmNr].bilde;
+            if (spmOgSvar[spmNr].bilde == "") {
+                imgBilde.alt = "";
+            }
+            alternativ1.hidden = false;
+            alternativ2.hidden = false;
+            alternativ3.hidden = false;
+            btnForrige.hidden = false;
+            btnNeste.hidden=false;
+                alternativ1.innerHTML = spmOgSvar[spmNr].a1;
+                alternativ2.innerHTML = spmOgSvar[spmNr].a2;
+                alternativ3.innerHTML = spmOgSvar[spmNr].a3;
+                inpSvar.value="";
+                       inpNyttSpmSvar.value = "";
+ 
+        }
+
+        settOppSkjermbilde();
+
+        function sjekkSvar() {
+            //if (inpSvar.value.toLowerCase() == spmOgSvar[spmNr].riktig.toLowerCase()) {
+
+            if (inpSvar.value.toLowerCase() == spmOgSvar[spmNr].riktig.toLowerCase()) {
+                lydRiktigSvar.play();
+                alert("du er et geni")
+            }
+            else {
+                lydFeilSvar.play();
+                alert("du er ikke et geni ennå")
+
+            }
+        }
+        btnKlar.addEventListener("click", sjekkSvar);
+
+        function nesteSpm() {
+            btnForrige.disabled = false;
+            if (spmNr < spmOgSvar.length - 1) {
+                spmNr = spmNr + 1 //spmNr++;
+                settOppSkjermbilde();
+            }
+            if (spmNr == spmOgSvar.length - 1) {
+                btnNeste.disabled = true;
+            }
+        }
+        btnNeste.addEventListener("click", nesteSpm);
+
+
+        function forrigeSpm() {
+            btnNeste.disabled = false;
+            if (spmNr > 0) {
+                spmNr = spmNr - 1
+                settOppSkjermbilde();
+
+            }
+            if (spmNr == 0) {
+                btnForrige.disabled = true;
+            }
+        }
+        btnForrige.addEventListener("click", forrigeSpm);
+
+        function adminFunksjoner() {
+            btnAdmin.innerHTML = "Tilbake til vanlig svarmodus";
+            btnAdmin.removeEventListener("click", adminFunksjoner);
+            btnAdmin.addEventListener("click", normalFunksjoner);
+            inpNyttSpmSvar.hidden = false;
+            sporsmaal.innerHTML = "Skriv nytt spørsmål i første inputfelt, riktig svar i andre";
+            inpSvar.placeholder = "Spørsmål";
+            inpNyttSpmSvar.placeholder = "Svar";
+            alternativ1.hidden = true;
+            alternativ2.hidden = true;
+            alternativ3.hidden = true;
+            imgBilde.src = "";
+            imgBilde.alt = "";
+            btnForrige.hidden = true;
+            btnNeste.hidden = true;
+            btnKlar.removeEventListener("click", sjekkSvar);
+            btnKlar.addEventListener("click", leggInnNyttSpm);
+            btnKlar.innerHTML = "Legg inn spørsmålet";
+        }
+
+        function normalFunksjoner() {
+            inpSvar.placeholder = "skriv svar";
+            inpNyttSpmSvar.hidden = true;
+            btnAdmin.innerHTML = "Bli admin";
+            btnAdmin.removeEventListener("click", normalFunksjoner);
+            btnAdmin.addEventListener("click", adminFunksjoner);
+            btnKlar.innerHTML = "klikk når du er klar";
+            btnAdmin.innerHTML = "bli admin";
+            btnKlar.removeEventListener("click", leggInnNyttSpm);
+            btnKlar.addEventListener("click", sjekkSvar);
+            settOppSkjermbilde();
+        }
+
+        function leggInnNyttSpm() {
+            //gjør alt som trengs for å legge til et nytt spm
+            var nyttSpm = { q: inpSvar.value, riktig: inpNyttSpmSvar.value, a1: "", a2: "", a3: "", bilde: "" };
+            spmOgSvar.push(nyttSpm);
+        }
+        btnAdmin.addEventListener("click", adminFunksjoner);
+
+        function knappeTrykk(evt){
+            var tallkode=evt.keycode;
+            if(tallkode==66){//når man trykker b
+                btnAdmin.hidden=false
+            }
+        }
+        document.addEventListener("keydown", knappeTrykk)
+
+    </script>
+
+
+</body>
+
+</html>

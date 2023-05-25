@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+
+
+    <style>
+        /*CSS for hele dokumentet*/
+        body {
+            background-color: #CCD6A6;
+        }
+
+        /*CSS for hovedområdet*/
+        #hoved {
+            font-size: xx-small;
+            width: 250px;
+            padding: 30px;
+            font-family: monospace;
+            background-color: #EDF1D6;
+            border: 1px solid #C7F2A4;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /*CSS for tekstfelt*/
+        input[type="text"] {
+            width: 100px;
+            height: 10px;
+            padding: 5px;
+            font-size: x-small;
+            color: #B6E388;
+            border: 1px solid #7FB77E;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+
+        #fullført {
+            font-size: xx-small;
+            width: 250px;
+            font-family: monospace;
+            padding: 30px;
+            background-color: #EDF1D6;
+            border: 1px solid #C7F2A4;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #fullført p3 {
+            color: #7FB77E;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="hoved">
+        <p3 style="color: #7FB77E;"> ✭ TO DO LIST - UKE: <input type="text" name="uke" placeholder="uke ... "
+                id="chekBox1">
+        </p3>
+        <br>
+
+        <!-- en eksisterende oppgaveliste -->
+        <ul id="toDoList">
+            <li><input type="checkbox" name="oppgave" value="øve til prøve">øve til prøve</li>
+            <li><input type="checkbox" name="oppgave" value="rydde rommet">rydde rommet!!</li>
+            <li><input type="checkbox" name="oppgave" value="handle foood">handle foood</li>
+        </ul>
+
+
+        <!-- input-felt for å legge til oppgaver i oppgavelisten -->
+        <input type="text" id="nyOppgave" placeholder="legg til oppgave ✭">
+        <button onclick="leggTilOppgave()">legg til</button>
+        <br>
+    </div>
+
+    <ul id="fullført">
+        <p3> ✭ OPPGAVER FULLFØRT! ✭ : </p3>
+    </ul>
+
+
+    <script>
+
+        /* funksjon for å legge til en ny oppave i listen hvis brukeren skriver inn 
+        en oppgave i tekstfeltet og trykker på "legg til"- knappen. da vil ny li-element
+        bli laget med en checkbox og oppgaveteksten som brukeren skriver inn, 
+        den blir videre lagt til i ul-elementet "toDoList"*/
+
+        function leggTilOppgave() {
+            var input = document.getElementById("nyOppgave");
+            var oppgave = input.value;
+            if (oppgave !== "") { /* dette sier hvis variabelen "oppagve" ikke er lik en tom streng, vil koden i linjene under utføres*/
+                var liste = document.getElementById("toDoList");
+                var nyListe = document.createElement("li");
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "oppgave";
+                checkbox.value = oppgave;
+
+                nyListe.appendChild(checkbox); /*her opprettes nye avkrysningsbokser og legges til elementet "nyListe", <- nytt oppgavelistelement som legges til i listen*/
+                nyListe.appendChild(document.createTextNode(oppgave)); 
+                liste.appendChild(nyListe);
+                input.value = ""; /* her slettes det som ble skrevet i inputen, klar for å bli lagt til nye oppgaver*/
+                checkbox.addEventListener('change', flyttOppgave); /*en lytter til chkbox oppgavene, ved hjelp av dette vil funksjone nkalles opp for å flytte den fullførte oppgaven til fullført-liste, <- når checkboxen blir sjekket*/
+            }
+        }
+
+
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', flyttOppgave);
+        });
+        
+        /*oppgavene som er merket som fullført, fjernet fra toDoList og lagt til i ul-elementet
+         "fullført". Funksjonen løper gjennom alle elementene i toDoList, og hvis en oppgave er
+          merket som fullført, blir checkboxen fjernet og li-elementet blir flyttet til "fullført"
+           -ul-elementet. Deretter justeres tellevariabelen "i" for å sikre at alle elementene blir 
+           løpt gjennom.*/
+        function flyttOppgave() {
+            var liste = document.getElementById("toDoList");
+            var fullført = document.getElementById("fullført");
+
+            for (var i = 0; i < liste.children.length; i++) {
+                var oppgave = liste.children[i];
+                if (oppgave.querySelector('input[type="checkbox"]').checked) {
+                    oppgave.removeChild(oppgave.querySelector('input[type="checkbox"]'));
+                    fullført.appendChild(oppgave);
+                    i--;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yatzy spill</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-size: small;
+            background-color: rgb(251, 251, 251);
+        }
+
+        h1 {
+            color: #4e7558;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        .tjukk {
+            background-color: #677a6c;
+            font-weight: bold;
+        }
+
+        #tabel1 {
+            border: 2px solid #4e7558;
+            border-color: #4e7558;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        #plassering {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .kast {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- lager en knap som skal kaste terningene -->
+    <div class="kast">
+        <button onclick="kastAlle()" ondblclick="ikkeHoldTerning()" id="kast">kast (opptil3!)</button>
+    </div>
+
+    <!-- her gir vi terningen(bildene) navn, id og klasse -->
+    <div class="kast">
+        <button>
+            <p><img id="imgNummer1" src="img(Yatzy)/1.png"></p>
+        </button>
+    </div>
+
+
+    <div class="kast">
+        <button>
+            <p> <img id="imgNummer2" src="img(Yatzy)/2.png"></p>
+        </button>
+    </div>
+
+    <div class="kast">
+        <button>
+            <p><img id="imgNummer3" src="img(Yatzy)/3.png"></p>
+        </button>
+    </div>
+
+    <div class="kast">
+        <button>
+            <p><img id="imgNummer4" src="img(Yatzy)/4.png"></p>
+
+        </button>
+    </div>
+
+    <div class="kast">
+        <button>
+            <p><img id="imgNummer5" src="img(Yatzy)/5.png"></p>
+        </button>
+    </div>
+
+    <!-- lager yatzy tabell -->
+    <table id="tabel1" border="6" width="300" cellspacing="5">
+        <tr>
+            <th> YATZY </th>
+            <th id="person1">spiller 1</th>
+            <th id="person2">spiller 2</th>
+            <th id="person3">spiller 3</th>
+            <th id="person4">spiller 4</th>
+
+
+        </tr>
+        <tr>
+            <td> Enere</td>
+            <td id="enereSpiller1"> </td>
+            <td id="enereSpiller2"> </td>
+            <td id="enereSpiller3"> </td>
+            <td id="enereSpiller4"> </td>
+        </tr>
+
+        <tr>
+            <td> Toere </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> Treere </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> Firere </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> Femmmere </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> Seksere</td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr class="tjukk">
+            <td> sum</td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> bonus</td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> 1 par </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> 2 par </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> 3 like </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> 4 like </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> liten straight</td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> stor straight</td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> hus </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <td> sjanse </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr>
+            <th> Yatzy </th>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+        <tr class="tjukk">
+            <th> totalsum </th>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+
+
+    </table>
+
+    <script>
+        /*dersom terningen. er sant =... + jeg har gitt mengden i terningern*/
+        let terning1 = true;
+        let terning2 = true;
+        let terning3 = true;
+        let terning4 = true;
+        let terning5 = true;
+        var terning = [1, 2, 3, 4, 5, 6];
+
+        let tilfeldig1;
+        let tilfeldig2;
+        let tilfeldig3;
+        let tilfeldig4;
+        let tilfeldig5;
+
+        /*når man kaster terning skal vi få en tilfelsig terning som er mellom 1-6*/
+        function kastTerning1() {
+            if (terning1 == true) {
+                tilfeldig1 = terning[Math.floor(Math.random() * terning.length)];
+                imgNummer1.src = "img(Yatzy)/" + tilfeldig1 + ".png"
+            }
+        }
+
+        function kastTerning2() {
+
+            if (terning2 == true) {
+                tilfeldig2 = terning[Math.floor(Math.random() * terning.length)];
+                imgNummer2.src = "img(Yatzy)/" + tilfeldig2 + ".png"
+            }
+        }
+
+        function kastTerning3() {
+
+            if (terning3 == true) {
+                tilfeldig3 = terning[Math.floor(Math.random() * terning.length)];
+
+                imgNummer3.src = "img(Yatzy)/" + tilfeldig3 + ".png"
+            }
+
+        }
+
+        function kastTerning4() {
+
+            if (terning4 == true) {
+                tilfeldig4 = terning[Math.floor(Math.random() * terning.length)];
+
+                imgNummer4.src = "img(Yatzy)/" + tilfeldig4 + ".png"
+            }
+
+        }
+        function kastTerning5() {
+
+            if (terning5 == true) {
+                tilfeldig5 = terning[Math.floor(Math.random() * terning.length)];
+
+                imgNummer5.src = "img(Yatzy)/" + tilfeldig5 + ".png"
+            }
+        }
+
+        /*funskjon for antall kast, (max.3)*/
+        function kastAlle() {
+            antallKast = antallKast + 1
+            if (antallKast < maxAntallKast) {
+                kastTerning1();
+                kastTerning2();
+                kastTerning3();
+                kastTerning4();
+                kastTerning5();
+            }
+
+            else {
+                alert("du har ikke flere kast..")
+            }
+        }
+
+
+
+        /*spør om antall spillere, og ber om navnet til spillerne*/
+        var antallSpillere = 0;
+        antallSpillere = Number(prompt("antall spillere? (maks 4)"))
+        console.log(antallSpillere)
+
+        if (antallSpillere == 1) {
+            let navn1 = prompt("navn på spiller:")
+            person1.innerHTML = navn1;
+        }
+
+        else if (antallSpillere == 0) {
+            alert("umm.. ");
+        }
+
+        else if (antallSpillere == 2) {
+            let navn1 = prompt("navnet til spiller 1");
+            person1.innerHTML = navn1;
+            let navn2 = prompt("navnet til spiller 2");
+            person2.innerHTML = navn2;
+        }
+
+        else if (antallSpillere == 3) {
+            let navn1 = prompt("navnet til spiller 1");
+            person1.innerHTML = navn1;
+            let navn2 = prompt("navnet til spiller 2");
+            person2.innerHTML = navn2;
+            let navn3 = prompt("navnet til spiller 3");
+            person3.innerHTML = navn3;
+        }
+
+        else if (antallSpillere == 4) {
+            let navn1 = prompt("navnet til spiller 1");
+            person1.innerHTML = navn1;
+            let navn2 = prompt("navnet til spiller 2");
+            person2.innerHTML = navn2;
+            let navn3 = prompt("navnet til spiller 3");
+            person3.innerHTML = navn3;
+            let navn4 = prompt("navnet til spiller 4");
+            person4.innerHTML = navn4;
+            console.log("antallSpillere")
+        }
+
+        else {
+            alert("ops! for mange spillere:(");
+        }
+
+
+
+
+        let maxAntallKast = 3
+        let antallKast = 0
+
+
+        /*holde på de terningen man øsnker ved å klippe på bilde av terning*/
+        function holdTerning1() {
+            terning1 = false
+            imgNummer1.style.borderWidth = "10px"
+        }
+        imgNummer1.onclick = holdTerning1
+
+        function holdTerning2() {
+            terning2 = false
+            imgNummer2.style.borderWidth = "10px"
+        }
+        imgNummer2.onclick = holdTerning2
+
+        function holdTerning3() {
+            terning3 = false
+            imgNummer3.style.borderWidth = "10px"
+        }
+        imgNummer3.onclick = holdTerning3
+
+        function holdTerning4() {
+            terning4 = false
+            imgNummer4.style.borderWidth = "10px"
+        }
+        imgNummer4.onclick = holdTerning4
+
+        function holdTerning5() {
+            terning5 = false
+            imgNummer5.style.borderWidth = "10px"
+        }
+        imgNummer5.onclick = holdTerning5
+
+
+
+        /*fuksjon for å ikke holde terninge, ved dobbelklikk*/
+        function ikkeHoldTerning1() {
+            terning1 = true
+            imgNummer1.style.borderWidth = "10px"
+        }
+        imgNummer1.ondblclick = ikkeHoldTerning1
+
+        function ikkeHoldTerning2() {
+            terning2 = true
+            imgNummer2.style.borderWidth = "10px"
+        }
+        imgNummer2.ondblclick = ikkeHoldTerning2
+
+        function ikkeHoldTerning3() {
+            terning3 = true
+            imgNummer3.style.borderWidth = "10px"
+        }
+        imgNummer3.ondblclick = ikkeHoldTerning3
+
+
+        function ikkeHoldTerning4() {
+            terning4 = true
+            imgNummer4.style.borderWidth = "10px"
+        }
+        imgNummer4.ondblclick = ikkeHoldTerning4
+
+        function ikkeHoldTerning5() {
+            terning5 = true
+            imgNummer5.style.borderWidth = "10px"
+        }
+        imgNummer5.ondblclick = ikkeHoldTerning5
+
+
+        /* funker ikke men prøve å summere alle ener terningene vi får*/
+        var enereSpiller1 = document.getElementById("enereSpiller1")
+        function sumerEnereSpiller1() {
+            let sum = 0
+
+            if (tilfeldig1 == 1) {
+                sum = sum + 1
+            }
+
+            if (tilfeldig2 == 1) {
+                sum = sum + 1
+            }
+
+            if (tilfeldig3 == 1) {
+                sum = sum + 1
+            }
+
+            if (tilfeldig4 == 1) {
+                sum = sum + 1
+            }
+
+            if (tilfeldig5 == 1) {
+                sum = sum + 1
+            }
+
+            enereSpiller1.innerHTML = Nummer(sum)
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

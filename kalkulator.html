@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkulator</title>
+
+
+    <style>
+        body {
+            background-color: rgb(228, 229, 229);
+            text-align: center;
+        }
+
+        h1 {
+            color: #4e7558;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <h1>Kalkulator</h1>
+    <input type="Number" placeholder="Skriv inn et tall" id="a">
+    <input type="text" placeholder="Skal du -, +, /, *" id="operator">
+    <input type="Number" placeholder="Skriv inn et til tall" id="b">
+
+    <button
+        onclick="kalkulator(document.getElementById('a').value, document.getElementById('b').value, document.getElementById('operator').value)">=</button>
+    <p id="txtSvar"></p>
+
+    <script>
+        function kalkulator(a, b, operator) {
+            a = parseInt(a);
+            b = parseInt(b);
+            if (operator == "+") {
+                document.getElementById("txtSvar").innerHTML = a + b;
+            }
+            if (operator == "-") {
+                document.getElementById("txtSvar").innerHTML = a - b;
+            }
+            if (operator == "/") {
+                document.getElementById("txtSvar").innerHTML = a / b;
+            }
+            if (operator == "*") {
+                document.getElementById("txtSvar").innerHTML = a * b;
+            }
+        }
+    </script>
+</body>
+
+</html>

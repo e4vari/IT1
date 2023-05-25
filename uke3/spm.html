@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> uke 3 - spormaal</title>
+</head>
+
+<body>
+
+    <h1 id="sporsmaal"> spørsmål!</h1>
+    <input id="inpSvar" type="text">
+    <button id="btnKlar"> trykk videre når du er klar!</button>
+    <button id="btnForrige"> forrige spm </button>
+    <button id="btnNeste"> neste spm </button>
+
+    <script>
+        var sporsmaal = document.getElementById("sporsmaal");
+        var inpSvar = document.getElementById("inpSvar");
+        var btnKlar = document.getElementById("btnKlar");
+        var btnForrige = document.getElementById("btnForrige");
+        var btnNeste = document.getElementById("btnNeste");
+        var spmNr = 0;
+        btnForrige.disabled=true;
+
+
+        var spmOgSvar = [
+            { q: "hva heter kongen i norge", a: "Harald" },
+            { q: "hvem er norges stasminister (2023)?", a: "Jonas Gahr Støre" },
+            { q: "hahah", a: "lol" }
+        ]
+
+        sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+
+        function sjekkSvar() {
+            if (inpSvar.value.toLowerCase() == spmOgSvar[spmNr].a.toLowerCase()) {
+                alert("du er et geni, ig..")
+            }
+            else {
+                alert("du er ikke et geni ennå")
+            }
+        }
+        btnKlar.addEventListener("click", sjekkSvar);
+
+        function nesteSpm() {
+            btnForrige.disabled = false;
+            if (spmNr < spmOgSvar.length - 1){
+                spmNr = spmNr + 1 //spmNr++;
+                sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            }
+            if (spmNr == spmOgSvar.length-1) {
+                btnNeste.disabled=true;
+            }
+        }
+
+        btnNeste.addEventListener("click", nesteSpm);
+
+        function forrigeSpm() {
+            btnNeste.disabled=false;
+            if (spmNr > 0) {
+                spmNr = spmNr - 1
+                sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            }
+            if (spmNr == 0) {
+                btnForrige.disabled = true;
+            }
+        }
+        btnForrige.addEventListener("click", forrigeSpm);
+
+
+    </script>
+</body>
+
+</html>
